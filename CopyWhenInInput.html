@@ -1,0 +1,40 @@
+<div></div>
+<input>
+<script>
+var counter = 0;
+document.addEventListener('keydown', function(e) {
+
+			if (e.keyCode != 13) return;
+
+			var pos, activeElement = document.activeElement;
+			if (activeElement)
+				{
+					// activeElement.blur();
+					pos = activeElement.selectionStart;
+				}
+
+			var selection = window.getSelection();
+    		selection.removeAllRanges();
+
+    		var el = document.querySelector('div');
+    		el.innerText = 'test_' + (++counter);
+    		var range = document.createRange();
+    		range.selectNodeContents(el);
+    		selection.addRange(range);
+
+    		var success = document.execCommand('copy');
+    		console.log(success);
+    		selection.removeAllRanges();
+
+			if (activeElement)
+				try
+					{
+						activeElement.focus();
+						activeElement.setSelectionRange(pos, pos);
+					}
+				catch (e)
+					{
+					}
+
+	});
+</script>
