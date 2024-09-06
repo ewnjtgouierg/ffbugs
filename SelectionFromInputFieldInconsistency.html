@@ -1,0 +1,24 @@
+Press Enter to select <i>THIS</i><br>
+<input><br>
+<input type=checkbox> blur before select
+<script>
+var counter = 0;
+document.addEventListener('keydown', function(e) {
+
+			if (e.keyCode != 13) return;
+
+			if (document.querySelector("[type=checkbox]").checked
+					&& document.activeElement)
+						document.activeElement.blur();
+
+			var selection = window.getSelection();
+    		selection.removeAllRanges();
+
+    		var el = document.querySelector('i');
+    		var range = document.createRange();
+    		range.selectNodeContents(el);
+
+    		selection.addRange(range);
+
+	});
+</script>
