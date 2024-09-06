@@ -1,4 +1,6 @@
-<div></div>
+Press ENTER to run execCommand('copy')<br><br>
+Copying to clipboard: <span></span><br><br>
+execCommand('copy') reports success: <label></label><br><br>
 <input>
 <script>
 var counter = 0;
@@ -16,14 +18,14 @@ document.addEventListener('keydown', function(e) {
 			var selection = window.getSelection();
     		selection.removeAllRanges();
 
-    		var el = document.querySelector('div');
+    		var el = document.querySelector('span');
     		el.innerText = 'test_' + (++counter);
     		var range = document.createRange();
     		range.selectNodeContents(el);
     		selection.addRange(range);
 
     		var success = document.execCommand('copy');
-    		console.log(success);
+    		document.querySelector('label').innerText = success.toString();
     		selection.removeAllRanges();
 
 			if (activeElement)
