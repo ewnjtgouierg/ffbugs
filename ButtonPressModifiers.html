@@ -1,0 +1,16 @@
+<button>Press me with Enter or Space</button>
+<br>
+<br>
+<div></div>
+<script>
+window.addEventListener('load', function()
+	{
+			document.querySelector('button').focus();
+	});
+document.querySelector('button').addEventListener('click', function(event) {
+		document.querySelector('div').innerText =
+			'event.type='+event.type
+			+ "\nevent.shiftKey="+event.shiftKey
+			+ "\nevent.getModifierState('shift')="+event.getModifierState('shift');
+	});
+</script>
