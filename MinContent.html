@@ -1,0 +1,20 @@
+<style>
+[grid]
+	{
+		display: grid;
+		grid-template-columns: 1fr 0fr;
+	}
+input
+	{
+		width: 100%;
+		min-width: min-content;
+	}
+</style>
+<div grid>
+	<div>stretching column</div>
+	<div><input value="word"></div>
+</div>
+<div grid>
+	<div></div>
+	<div><div contenteditable>word</div></div>
+</div>
