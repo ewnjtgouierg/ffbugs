@@ -2,19 +2,45 @@
 [grid]
 	{
 		display: grid;
-		grid-template-columns: 1fr 0fr;
+		grid-gap: 10px;
+		grid-template-columns: 100px 0fr 1fr;
+		margin: 0 0 10px 30px;
+		border: 1px solid #d0d0d0;
+		padding: 10px;
 	}
-input
+[width_100]
 	{
 		width: 100%;
+	}
+[min_content]
+	{
 		min-width: min-content;
 	}
+[contenteditable]
+	{
+		border: 1px solid #d0d0d0;
+	}
 </style>
+&lt;INPUT&gt;<br><br>
 <div grid>
-	<div>stretching column</div>
+	<div>deault</div>
 	<div><input value="word"></div>
+	<div>stretching column</div>
 </div>
 <div grid>
+	<div>width: 100%</div>
+	<div><input width_100 value="word"></div>
 	<div></div>
+</div>
+<div grid>
+	<div>width: 100%<br><br>
+min-width: min-content</div>
+	<div><input width_100 min_content value="word"></div>
+	<div></div>
+</div>
+<br>&lt;DIV contenteditable&gt;<br><br>
+<div grid>
+	<div>deault input element</div>
 	<div><div contenteditable>word</div></div>
+	<div></div>
 </div>
