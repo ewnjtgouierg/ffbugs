@@ -20,8 +20,14 @@ var sync = function() {
 		{
 			display: block;
 			width: 100%;
+		}
+	[all]>*:not(label)
+		{
 			flex-grow: 1;
-			
+		}
+	label	
+		{
+			color: gray;
 		}
 	[contenteditable]
 		{
@@ -39,7 +45,9 @@ var sync = function() {
 <button onclick="document.querySelector('[contenteditable]').innerHTML = ''; sync();">clear</button>
 <div all>
 <div><div contenteditable></div></div>
+<label>innerHTML</label>
 <div out></div>
+<label>innerText</label>
 <div out></div>
 </div>
 <script>
