@@ -1,0 +1,45 @@
+<script>
+var sync = function() {
+		var outs = document.querySelectorAll("[out]");
+		outs[0].innerText = el.innerHTML;
+		outs[1].innerText = el.innerText.replace(/\n/g, "\\n");
+	};
+</script>
+<style>
+	[all]
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: stretch;
+			height: 100%;
+		}
+	[all]>*
+		{
+			display: block;
+			width: 100%;
+			flex-grow: 1;
+			
+		}
+	[contenteditable]
+		{
+			outline: 1px dashed black;
+		}
+	[out]
+		{
+			white-space: pre;
+		}
+	button
+		{
+			float: right;
+		}
+</style>
+<button onclick="document.querySelector('[contenteditable]').innerHTML = ''; sync();">clear</button>
+<div all>
+<div><div contenteditable></div></div>
+<div out></div>
+<div out></div>
+</div>
+<script>
+var el = document.querySelector("[contenteditable]");
+el.onkeyup = sync;
+</script>
