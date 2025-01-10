@@ -1,0 +1,67 @@
+i'm trying to build firefox from source
+
+the fast build with `--enable-artifact-builds` runs fine
+
+but now i changes some .cpp file, so I had to run a "real" compilation
+
+first, i tried it with `ac_add_options --disable-optimize` - thinking it will make the build process faster. the resulting binary does work, but it is unusably slow: 3-5 second after each key press / mouse click before it takes effect (is it normal for disabling optimization to affect it to this extent?)
+
+so, i commented `ac_add_options --disable-optimize` and recompiled
+
+it took, indeed, more time (like 140 minutes compared to 130 with that option), reported a successful build, but resulting binary crashes
+
+it sometimes shows a dialogue for sending crash report to Mozilla before exiting, but no stack trace or any error report.
+
+there was a warning - obviously non-crucial, about gtk being unable to parse settings.ini - i removed that settings.ini, so the warning disappeared but firefox still crashes
+
+it says it is "attempting" to generate dump in `obj-x86_64-pc-linux-gnu/tmp/profile-default/minidumps/6fbd51cd-6a50-25f1-7bf1-ea586b26f12b.dmp` but when i check it - during the crash message, or after firefox exits - the `obj-x86_64-pc-linux-gnu/tmp/profile-default/minidumps` directory is empty
+
+below - crash report "details", just in case:
+
+```
+AdapterDeviceID: 0x0042
+AdapterDriverVendor: mesa/unknown
+AdapterDriverVersion: 18.3.6.0
+AdapterVendorID: 0x8086
+Add-ons: formautofill%40mozilla.org:1.0.1,pictureinpicture%40mozilla.org:1.0.0,webcompat-reporter%40mozilla.org:2.1.0,webcompat%40mozilla.org:130.3.0,default-theme%40mozilla.org:1.4.1,addons-search-detection%40mozilla.com:2.0.0
+AvailablePageFile: 2025852928
+AvailablePhysicalMemory: 6053302272
+AvailableSwapMemory: 0
+AvailableVirtualMemory: 6955675648
+BackgroundTaskMode: 0
+BuildID: 20250104160250
+ContentSandboxCapabilities: 119
+ContentSandboxCapable: 1
+ContentSandboxLevel: 4
+CrashTime: 1736053884
+DOMFissionEnabled: 1
+DOMIPCEnabled: 1
+EMCheckCompatibility: true
+EventLoopNestingLevel: 1
+GpuSandboxLevel: 0
+GraphicsNumActiveRenderers: 1
+GraphicsNumRenderers: 1
+HeadlessMode: 0
+InstallTime: 1736004516
+IsWayland: 0
+LastStartupWasCrash: 1
+Notes: Devuan GNU/Linux 3 (beowulf)FP(D00-L1000-W0000000-T01) WR? WR+ 
+ProductID: {ec8030f7-c20a-464f-9b0e-13a3a9e97384}
+ProductName: Firefox
+ReleaseChannel: default
+SafeMode: 0
+StartupCacheValid: 0
+StartupCrash: 0
+StartupTime: 1736053883
+SubmittedFrom: Client
+TelemetryEnvironment: {"build":{"applicationId":"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}","applicationName":"Firefox","architecture":"x86-64","buildId":"20250104160250","version":"132.0a1","vendor":"Mozilla","displayVersion":"132.0a1","platformVersion":"132.0a1","xpcomAbi":"x86_64-gcc3","updaterAvailable":true},"partner":{"distributionId":null,"distributionVersion":null,"partnerId":null,"distributor":null,"distributorChannel":null,"partnerNames":[]},"system":{"memoryMB":7822,"virtualMaxMB":null,"cpu":{"extensions":["hasMMX","hasSSE","hasSSE2","hasSSE3","hasSSSE3","hasSSE4_1","hasSSE4_2"]},"os":{"name":"Linux","version":"5.17.8","locale":"en-GB","distro":"Devuan","distroVersion":"3"},"hdd":{"profile":{"model":null,"revision":null,"type":null},"binary":{"model":null,"revision":null,"type":null},"system":{"model":null,"revision":null,"type":null}},"gfx":{"D2DEnabled":null,"DWriteEnabled":null,"ContentBackend":"Skia","Headless":false,"EmbeddedInFirefoxReality":null,"TargetFrameRate":60,"textScaleFactor":1,"adapters":[{"description":"Mesa DRI Intel(R) Ironlake Desktop ","vendorID":"0x8086","deviceID":"0x0042","subsysID":null,"RAM":0,"driver":null,"driverVendor":"mesa/unknown","driverVersion":"18.3.6.0","driverDate":null,"GPUActive":true}],"monitors":[{"screenWidth":1920,"screenHeight":1080,"defaultCSSScaleFactor":1,"contentsScaleFactor":1}],"features":{"compositor":"none","hwCompositing":{"status":"blocked:"},"gpuProcess":{"status":"unused"},"webrender":{"status":"blocklisted:FEATURE_FAILURE_OPENGL_LESS_THAN_3"},"wrCompositor":{"status":"blocklisted:FEATURE_FAILURE_WEBRENDER_COMPOSITOR_DISABLED"},"openglCompositing":{"status":"unavailable:FEATURE_FAILURE_OPENGL_NEED_HWCOMP"},"omtp":{"status":"unused"}}},"appleModelId":null,"hasWinPackageId":null},"settings":{"blocklistEnabled":true,"e10sEnabled":true,"e10sMultiProcesses":8,"fissionEnabled":true,"telemetryEnabled":true,"locale":"en-US","intl":{},"update":{"channel":"default","enabled":true},"userPrefs":{"browser.shell.checkDefaultBrowser":false,"browser.search.region":"RU","browser.urlbar.autoFill":true,"browser.urlbar.autoFill.adaptiveHistory.enabled":false,"browser.urlbar.dnsResolveSingleWordsAfterSearch":0,"browser.urlbar.quicksuggest.dataCollection.enabled":false,"browser.urlbar.suggest.quicksuggest.nonsponsored":false,"browser.urlbar.suggest.quicksuggest.sponsored":false,"media.gmp-gmpopenh264.lastInstallStart":1736004797,"media.gmp-gmpopenh264.lastDownload":1736004798,"media.gmp-gmpopenh264.lastUpdate":1736004803,"media.gmp-manager.lastCheck":1736004852,"media.gmp-manager.lastEmptyCheck":1736004852,"network.http.microsoft-entra-sso.enabled":false,"network.trr.strict_native_fallback":false,"widget.content.gtk-high-contrast.enabled":true},"sandbox":{"effectiveContentProcessLevel":4,"contentWin32kLockdownState":3},"addonCompatibilityCheckEnabled":true,"isDefaultBrowser":null},"profile":{}}
+TelemetrySessionId: c2805861-d130-446d-80d6-b93dd3446ace
+Throttleable: 1
+TotalPageFile: 8202113024
+TotalPhysicalMemory: 8202113024
+UptimeTS: 1.65512647
+Vendor: Mozilla
+Version: 132.0a1
+useragent_locale: en-US
+This report also contains technical information about the state of the application when it crashed.
+```
