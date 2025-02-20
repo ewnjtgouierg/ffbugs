@@ -1,0 +1,13 @@
+<div>
+Test
+</div>
+<button>div.style.background='yellow';</button>
+<button>delete div.style.background;</button>
+<button>div.style.background='';</button>
+<script>
+var div=document.querySelector('div');
+for (var button of document.querySelectorAll('button'))
+	button.addEventListener('click', function(e) {
+			(new Function('"use strict";' + e.target.innerText))();
+		});
+</script>

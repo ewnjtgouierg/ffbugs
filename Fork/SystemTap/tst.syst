@@ -1,0 +1,21 @@
+#! /usr/bin/env stap
+
+global target_pid
+
+probe process("/bin/ls").begin
+	{
+	    target_pid = pid()
+	}
+
+probe process("/bin/ls").insn
+	{
+		
+	}
+
+probe syscall.write
+	{
+	    if (pid() == target_pid)
+		    {
+		    	printf("ls is writing!\n")
+		    }
+	}

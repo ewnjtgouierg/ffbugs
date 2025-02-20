@@ -1,0 +1,14 @@
+#! /usr/bin/env stap
+
+probe process("/F/ff/Fork/SystemTap/Test/.exe").syscall.write
+	{
+    	if (type($arg1) == "pointer")
+			{
+        		local value = get_smp_value($arg1, 0, 20);
+        		if (value == "your_keyword")
+        			{
+            			printf("Keyword detected in pointer: %s\n", value);
+            			backtrace();
+        			}
+    		}
+	}
