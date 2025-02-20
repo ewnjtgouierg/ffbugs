@@ -7,7 +7,5 @@ Test
 <script>
 var div=document.querySelector('div');
 for (var button of document.querySelectorAll('button'))
-	button.addEventListener('click', function(e) {
-			(new Function('"use strict";' + e.target.innerText))();
-		});
+	button.addEventListener('click', new Function('"use strict"; ' + button.innerText));
 </script>
