@@ -1,0 +1,10 @@
+tooltip displaying/hiding logic is anti-usability / un-ergonomic
+it is only displayed once, then not displayed until you move mouse away from the element and move over it again (which might be understood by, say, web developers, but is not intuitive for a regular user)
+
+1. go to https://ewnjtgouierg.github.io/ffbugs/TooltipAfterClick.html
+2. hover over the button
+3. click the button, try not to move mouse right after the click
+4. repeat 3 if necessary
+
+1.
+2. tooltip = "us
