@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>* { color: black; }</style>
+This anchor ⚓ is a part of this text node, but its color is different<br><br>
+It's same when it is inside a text field: <input><br><br>
+Or in console (check, it's logged there)<br><br>
+explicitly setting text color with css, as done in this document, doesn't change this
+<script>
+window.addEventListener('load', function() {
+		var val = document.body.firstChild.nodeValue;
+		console.log(val);
+		document.querySelector('input').value = val;
+			});
+</script>
+
