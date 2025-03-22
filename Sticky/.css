@@ -1,0 +1,13 @@
+[blue]
+	{
+		background: #eeeeff;
+	}
+[sticky]
+	{
+		position: sticky;
+		top: 0;
+	}
+[toll]
+	{
+		height: 200%;
+	}

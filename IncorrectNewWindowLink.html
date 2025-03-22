@@ -1,0 +1,8 @@
+<button>click me while holding shift</button>
+<script style="display: block; white-space: pre-wrap">
+document.querySelector('button').addEventListener('mousedown', function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		window.open('about:blank');
+	});
+</script>
