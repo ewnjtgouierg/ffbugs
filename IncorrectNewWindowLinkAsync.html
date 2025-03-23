@@ -1,0 +1,10 @@
+<p>please hold Shift. about:blank is open in <span>5</span> seconds</p>
+<script style="display: block; white-space: pre-wrap">
+var interval = window.setInterval(function() {
+		if (!--document.querySelector('span').innerText)
+			{
+				window.open('about:blank');
+				window.clearInterval(interval);
+			}
+	}, 1000);
+</script>
