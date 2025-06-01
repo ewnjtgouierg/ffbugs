@@ -1,27 +1,3 @@
-<script>
-function copyToClipboard()
-	{
-
-		var text = document.querySelector('INPUT').value;
-		var selection = window.getSelection();
-		var range = document.createRange();
-		var el=document.createElement('DIV');
-		el.innerText = text;
-		document.body.appendChild(el);
-		range.selectNodeContents(el);
-		selection.removeAllRanges();
-		selection.addRange(range);
-
-		var success = document.execCommand('copy');
-
-		selection.removeAllRanges();
-
-		el.remove();
-
-		if (!success) throw "execCommand('copy') failed";
-
-	}
-</script>
 <input placeholder="enter something">
-<button onclick="copyToClipboard();">copy to clipboard</button>
+<button onclick="navigator.clipboard.writeText(document.querySelector('INPUT').value);">copy to clipboard</button>
 <input placeholder="paste here">
