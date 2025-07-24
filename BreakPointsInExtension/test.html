@@ -1,0 +1,13 @@
+<script>
+function sendMessageToExtension()
+	{
+		var e = new CustomEvent('msg2ext', {
+								detail: {
+									messageID: 123,
+									extensionID: 'test@addon',
+									ini: { something: 'nice' },
+								}});
+		document.dispatchEvent(e);
+	}
+</script>
+<button onclick="sendMessageToExtension();">send message to extension</button>
