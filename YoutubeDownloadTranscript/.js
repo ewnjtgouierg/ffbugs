@@ -3,7 +3,7 @@ new class {
 			{
 				if (this.transcriptDownloadID) return;
 				this.transcriptDownloadID = setInterval(this.tryDownloadTranscript.bind(this), 100);
-				document.querySelector('[aria-label="Show transcript"]').click();
+				document.querySelector("#primary-button").click();
 			}
 
 		tryDownloadTranscript()
