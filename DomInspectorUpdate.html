@@ -1,0 +1,19 @@
+<body>
+<script>
+function start()
+	{
+		var container = document.querySelector('div');
+		var el = document.createElement('div');
+		el.innerHTML = "Hello!";
+		container.appendChild(el);
+		var el = document.createElement('div');
+		el.innerHTML = "<span>Nice</span> weather!";
+		container.appendChild(el);
+		el = document.createElement('button');
+		el.innerText = "Ok";
+		container.appendChild(el);
+	}
+</script>
+<div>
+</div>
+<button onClick="start();">start</button>
